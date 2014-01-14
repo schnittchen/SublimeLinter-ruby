@@ -26,3 +26,7 @@ class Ruby(RubyLinter):
     multiline = True
     selectors = {'html (rails)': 'source.ruby.rails.embedded.html'}
     comment_re = r'\s*#'
+
+    def build_cmd(self, cmd=None):
+        script = ". /usr/local/share/chruby/chruby.sh; . /usr/local/share/chruby/auto.sh; chruby_auto; ruby -wc"
+        return('bash', '-c', script)
